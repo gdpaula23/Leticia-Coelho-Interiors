@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leticia Coelho Interiors</title>
+  <link rel="icon" href="favicon.ico.png" type="image/x-icon">
+
+  <style>
+    :root {
+      --primary: #7e5a4c;
+      --secondary: #f3e8e2;
+      --accent: #c9a66b;
+      --background: #fdf6f2;
+      --text: #2e2e2e;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: transparent;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 9999;
+      transition: top 0.3s;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    section {
+      padding: 120px 40px 60px;
+    }
+
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+      z-index: -1;
+      filter: brightness(0.8);
+    }
+
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+      background-image: url("leticia-photo2.jpg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      color: var(--white);
+    }
+
+    .about-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    .about-text,
+    .about-photo {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-text {
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .about-text h2 {
+      font-size: 2.8em;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+    }
+
+    .about-photo {
+      max-width: 400px;
+    }
+
+    .about-photo img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .services-header,
+    .contact-header {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .services-header h2,
+    .contact-header h2 {
+      font-size: 2.4em;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      color: var(--primary);
+    }
+
+    .services-header h2::after,
+    .contact-header h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .services-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      width: 280px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .image-placeholder img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .service-title {
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      padding: 15px;
+      background: var(--secondary);
+      color: var(--primary);
+    }
+
+    .service-description {
+      padding: 15px;
+      font-size: 15px;
+      text-align: center;
+      color: var(--text);
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      background: #f9f9f9;
+      padding: 40px;
+      border-radius: 10px;
+    }
+
+    .contact-form,
+    .contact-info {
+      background: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .contact-form h3,
+    .contact-info h3 {
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .contact-form button {
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #b88c4d;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+    }
+
+    .info-item a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .instagram img {
+      max-height: 20px;  /* Diminuir o tamanho da logo do Instagram */
+      width: auto;
+    }
+
+    .header-hidden {
+      top: -100px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Image -->
+  <div class="background-image"></div>
+
+  <!-- Header Section -->
+  <header id="header">
+    <img src="logo/logo.png" alt="Logo" class="logo" />
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About Me</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="about-text">
+      <h2>Who I am and What I Do</h2>
+      <p>Leticia Coelho is an interior designer with a background in design and a passion for creating stunning commercial and residential spaces.</p>
+      <p>Originally from Brazil, she has been living in the UK for nearly a decade, bringing her unique style and attention to detail to every project.</p>
+      <p>Leticia specializes in transforming spaces into beautiful, functional environments that reflect her clients’ personalities and needs.</p>
+    </div>
+    <div class="about-photo">
+      <img src="leticia-photo.jpg" alt="Leticia Coelho" />
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="services-header">
+      <h2>Our Services</h2>
+    </div>
+    <div class="services-container">
+      <div class="service-card">
+        <div class="image-placeholder">
+          <img src="fotos/teste.webp" alt="E-Design" />
+        </div>
+        <div class="service-title">E-Design - Virtual Interior Design</div>
+        <div class="service-description">Online consultation, mood boards, shopping lists and styling advice.</div>
+      </div>
+      <div class="service-card">
+        <div class="image-placeholder">
+          <img src="fotos/teste 2.jpg" alt="Styling" />
+        </div>
+        <div class="service-title">Interior Styling & Décor Consultation</div>
+        <div class="service-description">Seasonal styling, home staging and accessorizing.</div>
+      </div>
+      <div class="service-card">
+        <div class="image-placeholder">
+          <img src="fotos/teste 3.jpg" alt="Space Planning" />
+        </div>
+        <div class="service-title">Space Planning & Layout Optimization</div>
+        <div class="service-description">Maximizing functionality and flow in small or open spaces.</div>
+      </div>
+      <div class="service-card">
+        <div class="image-placeholder">
+          <img src="fotos/teste 4.jpg" alt="Sourcing" />
+        </div>
+        <div class="service-title">Furniture & Décor Sourcing</div>
+        <div class="service-description">Custom sourcing for furniture, lighting and accessories.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact-header">
+      <h2>Contact Me</h2>
+    </div>
+    <div class="contact-container">
+      <div class="contact-form">
+        <h3>Send Me a Message</h3>
+        <form action="https://formspree.io/f/mdkgzakl" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="_replyto" placeholder="Your Email" required />
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          <input type="hidden" name="_subject" value="New Contact Form Submission" />
+          <input type="hidden" name="_redirect" value="thank-you.html" />
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3>Get in touch</h3>
+        <div class="info-item">
+          <strong>Phone:</strong> <a href="tel:+447450244488">+44 07450244488</a>
+        </div>
+        <div class="info-item">
+          <strong>Email:</strong> <a href="mailto:info@leticiacoelho.com">leticiacoelhointeriors.co.uk</a>
+        </div>
+        <div class="info-item instagram">
+          <img src="insta-logo.png" alt="Instagram Logo" />
+          <a href="https://www.instagram.com/leticiaf.c.coelho/" target="_blank">Leticia Coelho Interiors</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function() {
+      let header = document.getElementById("header");
+      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop) {
+        header.classList.add("header-hidden");
+      } else {
+        header.classList.remove("header-hidden");
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+  </script>
+</body>
+</html>
