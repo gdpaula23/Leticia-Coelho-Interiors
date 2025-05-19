@@ -161,6 +161,8 @@
       flex-wrap: wrap;
       gap: 30px;
       justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .service-card {
@@ -267,12 +269,196 @@
     }
 
     .instagram img {
-      max-height: 20px;  /* Diminuir o tamanho da logo do Instagram */
+      max-height: 20px;
       width: auto;
     }
 
     .header-hidden {
       top: -100px;
+    }
+
+    /* Estilos atualizados para a galeria */
+    .photo-gallery-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto 80px auto;
+    }
+
+    .photo-box {
+      background-color: rgba(255, 255, 255, 0.5);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      border-radius: 12px;
+      width: 280px;
+      height: 200px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      user-select: none;
+      overflow: hidden;
+    }
+
+    .photo-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(255, 255, 255, 0.3);
+      z-index: 1;
+      transition: background-color 0.3s;
+    }
+
+    .photo-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .photo-box:hover::before {
+      background-color: rgba(243, 232, 226, 0.5);
+    }
+
+    .photo-box:hover span {
+      background-color: rgba(255, 255, 255, 0.7);
+      color: var(--accent);
+    }
+
+    .photo-box span {
+      position: relative;
+      z-index: 2;
+      font-weight: 700;
+      font-size: 26px;
+      color: var(--primary);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 12px rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 8px 20px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Estilos atualizados do modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: transparent;
+      max-width: 85vw;
+      max-height: 85vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .modal-image-container {
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .gallery-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .close-button {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      font-size: 32px;
+      font-weight: bold;
+      color: var(--white);
+      cursor: pointer;
+      user-select: none;
+      z-index: 10;
+      text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+
+    /* Setas de navegação */
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 28px;
+      font-weight: bold;
+      background-color: var(--primary);
+      color: var(--white);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+      z-index: 5;
+      opacity: 0.9;
+    }
+
+    .nav-button:hover {
+      background-color: var(--accent);
+      opacity: 1;
+    }
+
+    .prev-button {
+      left: -50px;
+    }
+
+    .next-button {
+      right: -50px;
+    }
+
+    /* Contador de imagens */
+    .image-counter {
+      margin-top: 15px;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 16px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+
+    /* Título da galeria */
+    .gallery-title {
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-align: center;
+      text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+
+    /* Estilo para a descrição do projeto */
+    .project-description {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      text-align: center;
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: var(--text);
     }
   </style>
 </head>
@@ -296,7 +482,7 @@
       <h2>Who I am and What I Do</h2>
       <p>Leticia Coelho is an interior designer with a background in design and a passion for creating stunning commercial and residential spaces.</p>
       <p>Originally from Brazil, she has been living in the UK for nearly a decade, bringing her unique style and attention to detail to every project.</p>
-      <p>Leticia specializes in transforming spaces into beautiful, functional environments that reflect her clients’ personalities and needs.</p>
+      <p>Leticia specializes in transforming spaces into beautiful, functional environments that reflect her clients' personalities and needs.</p>
     </div>
     <div class="about-photo">
       <img src="leticia-photo.jpg" alt="Leticia Coelho" />
@@ -311,33 +497,179 @@
     <div class="services-container">
       <div class="service-card">
         <div class="image-placeholder">
-          <img src="fotos/teste.webp" alt="E-Design" />
+          <img src="servicos/web.jpg" alt="E-Design" />
         </div>
         <div class="service-title">E-Design - Virtual Interior Design</div>
         <div class="service-description">Online consultation, mood boards, shopping lists and styling advice.</div>
       </div>
       <div class="service-card">
         <div class="image-placeholder">
-          <img src="fotos/teste 2.jpg" alt="Styling" />
+          <img src="servicos/interior.jpg" alt="Styling" />
         </div>
         <div class="service-title">Interior Styling & Décor Consultation</div>
         <div class="service-description">Seasonal styling, home staging and accessorizing.</div>
       </div>
       <div class="service-card">
         <div class="image-placeholder">
-          <img src="fotos/teste 3.jpg" alt="Space Planning" />
+          <img src="servicos/layout.jpeg" alt="Space Planning" />
         </div>
         <div class="service-title">Space Planning & Layout Optimization</div>
         <div class="service-description">Maximizing functionality and flow in small or open spaces.</div>
       </div>
       <div class="service-card">
         <div class="image-placeholder">
-          <img src="fotos/teste 4.jpg" alt="Sourcing" />
+          <img src="servicos/furniture.jpg" alt="Sourcing" />
         </div>
         <div class="service-title">Furniture & Décor Sourcing</div>
         <div class="service-description">Custom sourcing for furniture, lighting and accessories.</div>
       </div>
+      <div class="service-card">
+        <div class="image-placeholder">
+          <img src="servicos/full.jpg" alt="Duplicated" />
+        </div>
+        <div class="service-title">Full Interior Design</div>
+        <div class="service-description">Full Interior Design - Commercial and Residential - Concept Development - Space Planning - 3D Rendering - Furniture Selection - Project Coordination.</div>
+      </div>
     </div>
+
+    <!-- Título para a galeria -->
+    <div class="services-header" style="margin-top: 60px;">
+      <h2>Commercial Bathroom Refurbishment – Leeds</h2>
+    </div>
+    
+    <!-- Project description -->
+    <div class="project-description">
+      Located in Leeds, this project showcases the complete transformation of a dated commercial bathroom into a space that blends classic elegance with industrial style. We combined marble-effect surfaces, warm wood details, and matte black fixtures to create a refined yet modern atmosphere. The result is a stylish, functional upgrade that elevates the entire space. Before-and-after photos highlight the dramatic change and attention to detail throughout the design.
+    </div>
+
+    <!-- Quadradinhos clicáveis -->
+    <div class="photo-gallery-container">
+      <div class="photo-box" id="gallery1" style="background-image: url('gallery1/foto1.jpeg');">
+        <span>Before</span>
+      </div>
+      <div class="photo-box" id="gallery2" style="background-image: url('gallery2/after1.jpeg');">
+        <span>After</span>
+      </div>
+    </div>
+    <!-- Título para a nova galeria -->
+<div class="services-header" style="margin-top: 60px;">
+  <h2>Food Court Design – Abu Bakr Supermarket, Batley</h2>
+</div>
+
+<!-- Project description -->
+<div class="project-description">
+  For this project, I designed a warm and inviting food court space within Abu Bakr Supermarket in Batley. The goal was to create an environment where people feel welcome and comfortable to gather, eat, and relax. Natural plants were thoughtfully integrated to bring life and freshness into the space, while custom timber lampshades hanging from the ceiling add a beautiful touch of craftsmanship and warmth. The result is a balanced, organic atmosphere that enhances the overall customer experience.
+</div>
+
+<!-- Estilo para a nova galeria de fotos -->
+<style>
+  .photo-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+    flex-wrap: wrap;
+  }
+
+  .photo-item {
+    width: 350px;
+    height: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+
+  .photo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+
+  .photo-item:hover img {
+    transform: scale(1.05);
+  }
+  
+  /* Opcional: overlay com efeito ao passar o mouse */
+  .photo-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(126, 90, 76, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .photo-item:hover::after {
+    opacity: 1;
+  }
+</style>
+
+<!-- Novas fotos em tamanho médio -->
+<div class="photo-row">
+  <div class="photo-item" id="project-photo1">
+    <img src="gallery3/foto1.jpg" alt="Project Photo 1">
+  </div>
+  <div class="photo-item" id="project-photo2">
+    <img src="gallery3/foto2.jpg" alt="Project Photo 2">
+  </div>
+  <div class="photo-item" id="project-photo3">
+    <img src="gallery3/foto3.jpg" alt="Project Photo 3">
+  </div>
+</div>
+
+<!-- Script para adicionar ao JavaScript existente -->
+<script>
+// Adicione este código dentro do objeto 'galleries' existente no seu script
+projectPhotos: {
+  title: "Project Gallery",
+  images; [
+    "gallery3/foto1.jpg",
+    "gallery3/foto2.jpg",
+    "gallery3/foto3.jpg"
+  ]
+}
+
+// Adicione depois dos event listeners existentes
+document.getElementById("project-photo1").addEventListener("click", () => {
+  currentGalleryId = "projectPhotos";
+  currentIndex = 0;
+  showImage(0);
+  galleryTitleElem.textContent = galleries.projectPhotos.title;
+  totalImagesElem.textContent = galleries.projectPhotos.images.length;
+  modal.style.display = "flex";
+});
+
+document.getElementById("project-photo2").addEventListener("click", () => {
+  currentGalleryId = "projectPhotos";
+  currentIndex = 1;
+  showImage(1);
+  galleryTitleElem.textContent = galleries.projectPhotos.title;
+  totalImagesElem.textContent = galleries.projectPhotos.images.length;
+  modal.style.display = "flex";
+});
+
+document.getElementById("project-photo3").addEventListener("click", () => {
+  currentGalleryId = "projectPhotos";
+  currentIndex = 2;
+  showImage(2);
+  galleryTitleElem.textContent = galleries.projectPhotos.title;
+  totalImagesElem.textContent = galleries.projectPhotos.images.length;
+  modal.style.display = "flex";
+});
+</script>
   </section>
 
   <!-- Contact Section -->
@@ -373,6 +705,22 @@
     </div>
   </section>
 
+  <!-- Modal atualizado para exibir fotos com navegação por setas -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div class="gallery-title" id="gallery-title"></div>
+      <div class="modal-image-container">
+        <div class="nav-button prev-button">&lt;</div>
+        <img id="current-image" class="gallery-image" src="" alt="Gallery Image">
+        <div class="nav-button next-button">&gt;</div>
+      </div>
+      <div class="image-counter">
+        <span id="current-index">1</span> / <span id="total-images">3</span>
+      </div>
+    </div>
+  </div>
+
   <script>
     let lastScrollTop = 0;
     window.addEventListener("scroll", function() {
@@ -384,6 +732,116 @@
         header.classList.remove("header-hidden");
       }
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+
+    // Dados das galerias
+    const galleries = {
+      gallery1: {
+        title: "Before",
+        images: [
+          "gallery1/foto1.jpeg",
+          "gallery1/foto2.jpeg",
+          "gallery1/foto3.jpeg"
+        ]
+      },
+      gallery2: {
+        title: "After",
+        images: [
+          "gallery2/after1.jpeg",
+          "gallery2/after2.jpeg",
+          "gallery2/after3.jpeg",
+          "gallery2/after4.jpeg"
+        ]
+      }
+    };
+
+    // Elementos do modal
+    const modal = document.getElementById("modal");
+    const closeButton = document.querySelector(".close-button");
+    const prevButton = document.querySelector(".prev-button");
+    const nextButton = document.querySelector(".next-button");
+    const currentImage = document.getElementById("current-image");
+    const currentIndexElem = document.getElementById("current-index");
+    const totalImagesElem = document.getElementById("total-images");
+    const galleryTitleElem = document.getElementById("gallery-title");
+
+    // Variáveis para controle da galeria atual
+    let currentGalleryId = "";
+    let currentIndex = 0;
+
+    // Função para abrir a galeria
+    function openGallery(id) {
+      currentGalleryId = id;
+      currentIndex = 0;
+      
+      const gallery = galleries[id];
+      
+      // Atualiza o título da galeria
+      galleryTitleElem.textContent = gallery.title;
+      
+      // Atualiza o contador de imagens
+      totalImagesElem.textContent = gallery.images.length;
+      
+      // Carrega a primeira imagem
+      showImage(0);
+      
+      // Exibe o modal
+      modal.style.display = "flex";
+    }
+
+    // Função para mostrar uma imagem específica
+    function showImage(index) {
+      const gallery = galleries[currentGalleryId];
+      currentImage.src = gallery.images[index];
+      currentIndexElem.textContent = index + 1;
+      currentIndex = index;
+    }
+
+    // Função para navegar para a próxima imagem
+    function nextImage() {
+      const gallery = galleries[currentGalleryId];
+      const newIndex = (currentIndex + 1) % gallery.images.length;
+      showImage(newIndex);
+    }
+
+    // Função para navegar para a imagem anterior
+    function prevImage() {
+      const gallery = galleries[currentGalleryId];
+      const newIndex = (currentIndex - 1 + gallery.images.length) % gallery.images.length;
+      showImage(newIndex);
+    }
+
+    // Event listeners para navegação
+    nextButton.addEventListener("click", nextImage);
+    prevButton.addEventListener("click", prevImage);
+
+    // Event listeners para fechar o modal
+    closeButton.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    // Event listeners para navegação com teclado
+    window.addEventListener("keydown", (e) => {
+      if (modal.style.display === "flex") {
+        if (e.key === "ArrowRight") {
+          nextImage();
+        } else if (e.key === "ArrowLeft") {
+          prevImage();
+        } else if (e.key === "Escape") {
+          modal.style.display = "none";
+        }
+      }
+    });
+
+    // Event listeners para os botões da galeria
+    document.querySelectorAll(".photo-box").forEach(box => {
+      box.addEventListener("click", () => openGallery(box.id));
     });
   </script>
 </body>
