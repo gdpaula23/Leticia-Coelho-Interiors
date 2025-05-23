@@ -460,6 +460,59 @@
       line-height: 1.6;
       color: var(--text);
     }
+
+    /* Estilo para as galerias de fotos dos projetos */
+    .photo-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      flex-wrap: wrap;
+    }
+
+    .photo-item {
+      width: 350px;
+      height: 260px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .photo-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .photo-item::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(126, 90, 76, 0.1);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .photo-item:hover::after {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -480,7 +533,7 @@
   <section id="about" class="about-section">
     <div class="about-text">
       <h2>Who I am and What I Do</h2>
-      <p>Leticia Coelho is an interior designer with a background in design and a passion for creating stunning commercial and residential spaces.</p>
+      <p>Leticia Coelho is an interior designer with a background in fashion design and a passion for creating stunning commercial and residential spaces.</p>
       <p>Originally from Brazil, she has been living in the UK for nearly a decade, bringing her unique style and attention to detail to every project.</p>
       <p>Leticia specializes in transforming spaces into beautiful, functional environments that reflect her clients' personalities and needs.</p>
     </div>
@@ -532,17 +585,15 @@
       </div>
     </div>
 
-    <!-- Título para a galeria -->
+    <!-- Primeira seção de projeto -->
     <div class="services-header" style="margin-top: 60px;">
       <h2>Commercial Bathroom Refurbishment – Leeds</h2>
     </div>
     
-    <!-- Project description -->
     <div class="project-description">
       Located in Leeds, this project showcases the complete transformation of a dated commercial bathroom into a space that blends classic elegance with industrial style. We combined marble-effect surfaces, warm wood details, and matte black fixtures to create a refined yet modern atmosphere. The result is a stylish, functional upgrade that elevates the entire space. Before-and-after photos highlight the dramatic change and attention to detail throughout the design.
     </div>
 
-    <!-- Quadradinhos clicáveis -->
     <div class="photo-gallery-container">
       <div class="photo-box" id="gallery1" style="background-image: url('gallery1/foto1.jpeg');">
         <span>Before</span>
@@ -551,125 +602,66 @@
         <span>After</span>
       </div>
     </div>
-    <!-- Título para a nova galeria -->
-<div class="services-header" style="margin-top: 60px;">
-  <h2>Food Court Design – Abu Bakr Supermarket, Batley</h2>
-</div>
 
-<!-- Project description -->
-<div class="project-description">
-  For this project, I designed a warm and inviting food court space within Abu Bakr Supermarket in Batley. The goal was to create an environment where people feel welcome and comfortable to gather, eat, and relax. Natural plants were thoughtfully integrated to bring life and freshness into the space, while custom timber lampshades hanging from the ceiling add a beautiful touch of craftsmanship and warmth. The result is a balanced, organic atmosphere that enhances the overall customer experience.
-</div>
+    <!-- Segunda seção de projeto -->
+    <div class="services-header" style="margin-top: 60px;">
+      <h2>Food Court Design – Abu Bakr Supermarket, Batley</h2>
+    </div>
 
-<!-- Estilo para a nova galeria de fotos -->
-<style>
-  .photo-row {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto 60px;
-    flex-wrap: wrap;
-  }
+    <div class="project-description">
+      For this project, I designed a warm and inviting food court space within Abu Bakr Supermarket in Batley. The goal was to create an environment where people feel welcome and comfortable to gather, eat, and relax. Natural plants were thoughtfully integrated to bring life and freshness into the space, while custom timber lampshades hanging from the ceiling add a beautiful touch of craftsmanship and warmth. The result is a balanced, organic atmosphere that enhances the overall customer experience.
+    </div>
 
-  .photo-item {
-    width: 350px;
-    height: 260px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-  }
+    <div class="photo-row">
+      <div class="photo-item" data-gallery="projectPhotos1" data-index="0">
+        <img src="gallery3/foto1.jpg" alt="Project Photo 1">
+      </div>
+      <div class="photo-item" data-gallery="projectPhotos1" data-index="1">
+        <img src="gallery3/foto2.jpg" alt="Project Photo 2">
+      </div>
+      <div class="photo-item" data-gallery="projectPhotos1" data-index="2">
+        <img src="gallery3/foto3.jpg" alt="Project Photo 3">
+      </div>
+    </div>
 
-  .photo-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-  }
+    <!-- Terceira seção de projeto -->
+    <div class="services-header" style="margin-top: 60px;">
+      <h2>Smart Design for Small Spaces - Cozy Bradford Airbnb Bedroom</h2>
+    </div>
 
-  .photo-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s;
-  }
+    <div class="project-description">
+      Designing this compact Airbnb bedroom in Bradford came with its challenges—but with careful planning and a creative approach, we transformed the limited space into a cozy and functional retreat. Every element was thoughtfully considered to maximize comfort without compromising on style. Clever storage solutions, warm textures, and a calming color palette work together to create a welcoming atmosphere that feels both practical and personal. This project is a great example of how good design can make even the smallest spaces feel inviting and intentional.
+    </div>
 
-  .photo-item:hover img {
-    transform: scale(1.05);
-  }
-  
-  /* Opcional: overlay com efeito ao passar o mouse */
-  .photo-item::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(126, 90, 76, 0.1);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .photo-item:hover::after {
-    opacity: 1;
-  }
-</style>
+    <div class="photo-row">
+      <div class="photo-item" data-gallery="projectPhotos2" data-index="0">
+        <img src="gallery3/quarto1.jpg" alt="Project Photo 4">
+      </div>
+      <div class="photo-item" data-gallery="projectPhotos2" data-index="1">
+        <img src="gallery3/quarto2.jpg" alt="Project Photo 5">
+      </div>
+    </div>
 
-<!-- Novas fotos em tamanho médio -->
-<div class="photo-row">
-  <div class="photo-item" id="project-photo1">
-    <img src="gallery3/foto1.jpg" alt="Project Photo 1">
-  </div>
-  <div class="photo-item" id="project-photo2">
-    <img src="gallery3/foto2.jpg" alt="Project Photo 2">
-  </div>
-  <div class="photo-item" id="project-photo3">
-    <img src="gallery3/foto3.jpg" alt="Project Photo 3">
-  </div>
-</div>
+    <!-- Quarta seção de projeto -->
+    <div class="services-header" style="margin-top: 60px;">
+      <h2>Teenager Bedroom With Bespoke Furniture and Pops of Colour</h2>
+    </div>
 
-<!-- Script para adicionar ao JavaScript existente -->
-<script>
-// Adicione este código dentro do objeto 'galleries' existente no seu script
-projectPhotos: {
-  title: "Project Gallery",
-  images; [
-    "gallery3/foto1.jpg",
-    "gallery3/foto2.jpg",
-    "gallery3/foto3.jpg"
-  ]
-}
+    <div class="project-description">
+      This teenage bedroom combines functionality with a fun, contemporary vibe, making it the perfect space for both study and relaxation. Bespoke woodwork adds a tailored touch, with a custom-built desk, floating shelves, and floor-to-ceiling cupboards designed to maximize storage while keeping the room clutter-free. The clean lines of the woodwork are balanced with pops of colour—think accent cushions, wall art, or a bold feature wall—to bring energy and personality to the space. The overall look is modern yet warm, playful yet practical, designed to grow with the teenager over time.
+    </div>
 
-// Adicione depois dos event listeners existentes
-document.getElementById("project-photo1").addEventListener("click", () => {
-  currentGalleryId = "projectPhotos";
-  currentIndex = 0;
-  showImage(0);
-  galleryTitleElem.textContent = galleries.projectPhotos.title;
-  totalImagesElem.textContent = galleries.projectPhotos.images.length;
-  modal.style.display = "flex";
-});
-
-document.getElementById("project-photo2").addEventListener("click", () => {
-  currentGalleryId = "projectPhotos";
-  currentIndex = 1;
-  showImage(1);
-  galleryTitleElem.textContent = galleries.projectPhotos.title;
-  totalImagesElem.textContent = galleries.projectPhotos.images.length;
-  modal.style.display = "flex";
-});
-
-document.getElementById("project-photo3").addEventListener("click", () => {
-  currentGalleryId = "projectPhotos";
-  currentIndex = 2;
-  showImage(2);
-  galleryTitleElem.textContent = galleries.projectPhotos.title;
-  totalImagesElem.textContent = galleries.projectPhotos.images.length;
-  modal.style.display = "flex";
-});
-</script>
+    <div class="photo-row">
+      <div class="photo-item" data-gallery="projectPhotos3" data-index="0">
+        <img src="gallery3/novo1.jpg" alt="Project Photo 7">
+      </div>
+      <div class="photo-item" data-gallery="projectPhotos3" data-index="1">
+        <img src="gallery3/novo2.jpg" alt="Project Photo 8">
+      </div>
+      <div class="photo-item" data-gallery="projectPhotos3" data-index="2">
+        <img src="gallery3/novo3.jpg" alt="Project Photo 9">
+      </div>
+    </div>
   </section>
 
   <!-- Contact Section -->
@@ -705,7 +697,7 @@ document.getElementById("project-photo3").addEventListener("click", () => {
     </div>
   </section>
 
-  <!-- Modal atualizado para exibir fotos com navegação por setas -->
+  <!-- Modal para exibir fotos com navegação por setas -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -782,7 +774,7 @@ document.getElementById("project-photo3").addEventListener("click", () => {
       // Atualiza o contador de imagens
       totalImagesElem.textContent = gallery.images.length;
       
-      // Carrega a primeira imagem
+      // Carrega a drimeira imagem
       showImage(0);
       
       // Exibe o modal
